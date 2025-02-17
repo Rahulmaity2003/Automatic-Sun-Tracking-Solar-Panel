@@ -1,0 +1,11 @@
+int threshold = 10;  // Minimum light difference required to move the panel
+int previousLight = analogRead(LDR);  // Read initial light intensity
+
+void loop() {
+    int currentLight = analogRead(LDR);  // Read new light intensity
+    
+    if (abs(currentLight - previousLight) > threshold) {
+        movePanel();  // Adjust panel only if the change is significant
+        previousLight = currentLight;  // Update reference value
+    }
+}
